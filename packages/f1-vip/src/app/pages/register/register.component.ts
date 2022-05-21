@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserCampaignDataModelModule } from '@mk-email-campaign/data-model';
-import { Chance } from 'chance';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -42,9 +42,12 @@ export class RegisterComponent {
             firstName: this.user.firstname,
             lastname: this.user.lastname,
         }, this.user.password);
-        
-        console.log('Saved!');
-        
-        // this.router.navigate(['welcome']);
+
+        // TODO JWT
+        localStorage.setItem('token', JSON.stringify({
+            email: this.user.email,
+        }));
+
+        this.router.navigateByUrl('welcome');
     }
 }
