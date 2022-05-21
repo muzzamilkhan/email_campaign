@@ -9,35 +9,39 @@ import * as bcrypt from 'bcryptjs';
         CommonModule,
     ],
 })
-export class UserDataModelModule extends DataModelBase {
+export class UserCampaignDataModelModule extends DataModelBase {
     constructor() {
         super(DynamoDBTables.users);
     }
     
-    private getUserKey(email: string): string {
-        return `${email}`;
-    }
-    public async getUser(email: string){
+    public async getUser(email: string, campaign: string){
         return await this.getRecord({
             ExpressionAttributeValues: {
-                ":p": this.getUserKey(email),
-                ":s": 1,
+                ":E": email,
+                ":C": campaign,
+                ":EXPIRY": 1,
             },
-            KeyConditionExpression: "PK = :p and SK > :s",
+            KeyConditionExpression: "email = :E and campaign = :C and expiry > :EXPIRY",
         });
     }
     
-    public async saveUser(email: string, data: any, password: string) {
+    public async saveUser(email: string, campaign: string, data: any, password: string) {
         return await this.saveRecord({
             Item: {
-                "PK": {
-                    S: this.getUserKey(email),
+                "email": {
+                    S: email,
+                },
+                "campaign": {
+                    S: campaign,
                 },
                 "D": {
                     S: JSON.stringify(data),
                 },
                 "password_hash": {
                     S: this.hashPassword(password),
+                },
+                "expiry": {
+                    N: 0,
                 }
             },
         });

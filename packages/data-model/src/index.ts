@@ -1,2 +1,2 @@
 export { CampaignDataModelModule } from './lib/campaignDataModel.module';
-export { UserDataModelModule } from './lib/userDataModel.module';
+export { UserCampaignDataModelModule } from './lib/userCampaignDataModel.module';

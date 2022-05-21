@@ -26,7 +26,7 @@ const translateConfig = { marshallOptions, unmarshallOptions };
 export class DynamodbStoreModule {
     private dbClient: DynamoDB;
     private dynamoDBDocument: DynamoDBDocumentClient;
-
+    
     constructor(private table: DynamoDBTables) {
         this.dbClient = new DynamoDB({
             endpoint: 'http://localhost:8000',
@@ -36,13 +36,13 @@ export class DynamodbStoreModule {
                 secretAccessKey: "yyy",
             },
         });
-
+        
         this.dynamoDBDocument = DynamoDBDocumentClient.from(this.dbClient, translateConfig);
     }
     
     public async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
         await this.initTable();
-
+        
         const params: PutCommandInput = {
             TableName: tableDefinitions[DynamoDBTables[this.table]].TableName,
             ...input,
@@ -53,7 +53,7 @@ export class DynamodbStoreModule {
     
     public async getRecord(input: Omit<QueryCommandInput, 'TableName'>): Promise<any> {
         await this.initTable();
-
+        
         const params: QueryCommandInput = {
             TableName: tableDefinitions[DynamoDBTables[this.table]].TableName,
             ...input,

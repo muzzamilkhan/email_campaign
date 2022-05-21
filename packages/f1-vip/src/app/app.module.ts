@@ -6,22 +6,24 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
+export const CAMPAIGN_KEY = '4aac604c-5d45-5921-90ea-7c81e806a4b6';
+
 const routes: Routes = [
     { path: 'welcome', component: WelcomeComponent },
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, WelcomeComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
-    FormsModule,
-    RouterModule.forRoot(routes),
-  ],
-  exports: [
-    RouterModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, RegisterComponent, WelcomeComponent],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+        FormsModule,
+        RouterModule.forRoot(routes),
+    ],
+    exports: [
+        RouterModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

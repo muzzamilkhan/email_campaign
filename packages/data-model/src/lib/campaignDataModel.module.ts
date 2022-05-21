@@ -12,16 +12,13 @@ export class CampaignDataModelModule extends DataModelBase {
     constructor() {
         super(DynamoDBTables.campaigns);
     }
-    
-    private getCampaignKey(campaign: string): string {
-        return `${campaign}`;
-    }
+
     
     public async getUserCampaign(userId: string, campaign: string){
         // TODO change to getItem command
         return await this.getRecord({
             ExpressionAttributeValues: {
-                ":C": this.getCampaignKey(campaign),
+                ":C": campaign,
             },
             KeyConditionExpression: "campaign = :C",
         });
@@ -31,7 +28,7 @@ export class CampaignDataModelModule extends DataModelBase {
         return await this.saveRecord({
             Item: {
                 "campaign": {
-                    S: this.getCampaignKey(campaign),
+                    S: campaign,
                 },
                 "D": {
                     S: JSON.stringify(data)

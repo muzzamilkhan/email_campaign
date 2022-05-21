@@ -40,13 +40,13 @@ export const tableDefinitions: {[key in DynamoDBTables]: any} = {
             }, 
             {
                 AttributeName: "campaign", 
-                KeyType: "HASH"
+                KeyType: "RANGE"
             }, 
         ], 
         ProvisionedThroughput: {
             ReadCapacityUnits: 5, 
             WriteCapacityUnits: 5
         }, 
-        TableName: 'users',
+        TableName: 'userCampaign',
     }
 };

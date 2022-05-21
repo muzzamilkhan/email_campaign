@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-};
+  campaignKey: '4aac604c-5d45-5921-90ea-7c81e806a4b6',
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
