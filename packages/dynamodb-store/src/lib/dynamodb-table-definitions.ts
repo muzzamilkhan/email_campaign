@@ -27,6 +27,26 @@ export const tableDefinitions: {[key in DynamoDBTables]: any} = {
             ReadCapacityUnits: 5, 
             WriteCapacityUnits: 5
         }, 
-        TableName: 'campaigns21211',
+        TableName: 'campaigns',
+    },
+    users: {
+        
+        AttributeDefinitions: [
+            {
+                AttributeName: "PK", 
+                AttributeType: "S"
+            },
+        ], 
+        KeySchema: [
+            {
+                AttributeName: "PK", 
+                KeyType: "HASH"
+            },
+        ], 
+        ProvisionedThroughput: {
+            ReadCapacityUnits: 5, 
+            WriteCapacityUnits: 5
+        }, 
+        TableName: 'users',
     }
 };

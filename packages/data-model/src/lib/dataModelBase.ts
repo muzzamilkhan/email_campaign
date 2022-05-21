@@ -9,11 +9,11 @@ export abstract class DataModelBase {
       this.dynamoDBStore = new DynamodbStoreModule(dynamoTable);
     }
 
-    public async getRecord(input: Omit<QueryCommandInput, 'TableName'>): Promise<any> {
+    protected async getRecord(input: Omit<QueryCommandInput, 'TableName'>): Promise<any> {
         return await this.dynamoDBStore.getRecord(input);
     }
 
-    public async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
+    protected async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
         return await this.dynamoDBStore.saveRecord(input);
     }
 }

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { CampaignDataModelModule } from '@mk-email-campaign/data-model';
-import * as Chance from 'chance';
-
 
 @Component({
   selector: 'mk-email-campaign-root',
