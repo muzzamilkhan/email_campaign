@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "packages/dynamodb-store/src",
+  "prefix": "mk-email-campaign",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/dynamodb-store"],
+      "options": {
+        "jestConfig": "packages/dynamodb-store/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/dynamodb-store/**/*.ts",
+          "packages/dynamodb-store/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
