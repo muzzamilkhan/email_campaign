@@ -13,34 +13,33 @@ export class CampaignDataModelModule extends DataModelBase {
         super(DynamoDBTables.campaigns);
     }
     
-    private getUserCampaignKey(userId: string, campaign: string): string {
-        return `${userId}|${campaign}`;
+    private getCampaignKey(campaign: string): string {
+        return `${campaign}`;
     }
+    
     public async getUserCampaign(userId: string, campaign: string){
+        // TODO change to getItem command
         return await this.getRecord({
             ExpressionAttributeValues: {
-                ":p": this.getUserCampaignKey(userId, campaign),
-                ":s": 1,
+                ":C": this.getCampaignKey(campaign),
             },
-            KeyConditionExpression: "PK = :p and SK > :s",
+            KeyConditionExpression: "campaign = :C",
         });
     }
     
-    public async saveUserCampaign(userId: string, campaign: string, data: any, expiry: number = 0) {
+    public async saveCampaign(campaign: string, data: any) {
         return await this.saveRecord({
             Item: {
-                "PK": {
-                    S: this.getUserCampaignKey(userId, campaign),
-                }, 
-                "SK": {
-                    N: expiry?.toString() || '0',
+                "campaign": {
+                    S: this.getCampaignKey(campaign),
                 },
                 "D": {
                     S: JSON.stringify(data)
                 },
+                "expiry": {
+                    N: 0, 
+                }
             },
         });
     }
-    
-    
 }

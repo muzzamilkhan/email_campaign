@@ -4,16 +4,17 @@ import { DynamodbStoreModule, DynamoDBTables } from '@mk-email-campaign/dynamo-s
 
 export abstract class DataModelBase {
     private dynamoDBStore;
-
+    
     constructor(dynamoTable: DynamoDBTables) {
-      this.dynamoDBStore = new DynamodbStoreModule(dynamoTable);
+        this.dynamoDBStore = new DynamodbStoreModule(dynamoTable);
     }
-
+    
     protected async getRecord(input: Omit<QueryCommandInput, 'TableName'>): Promise<any> {
         return await this.dynamoDBStore.getRecord(input);
     }
-
+    
     protected async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
+        console.log('input', input);
         return await this.dynamoDBStore.saveRecord(input);
     }
 }

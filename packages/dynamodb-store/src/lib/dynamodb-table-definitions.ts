@@ -5,22 +5,14 @@ export const tableDefinitions: {[key in DynamoDBTables]: any} = {
         
         AttributeDefinitions: [
             {
-                AttributeName: "PK", 
+                AttributeName: "campaign", 
                 AttributeType: "S"
             }, 
-            {
-                AttributeName: "SK", 
-                AttributeType: "N"
-            },
         ], 
         KeySchema: [
             {
-                AttributeName: "PK", 
+                AttributeName: "campaign", 
                 KeyType: "HASH"
-            }, 
-            {
-                AttributeName: "SK", 
-                KeyType: "RANGE"
             }, 
         ], 
         ProvisionedThroughput: {
@@ -33,15 +25,23 @@ export const tableDefinitions: {[key in DynamoDBTables]: any} = {
         
         AttributeDefinitions: [
             {
-                AttributeName: "PK", 
+                AttributeName: "email", 
+                AttributeType: "S"
+            },
+            {
+                AttributeName: "campaign", 
                 AttributeType: "S"
             },
         ], 
         KeySchema: [
             {
-                AttributeName: "PK", 
+                AttributeName: "email", 
                 KeyType: "HASH"
-            },
+            }, 
+            {
+                AttributeName: "campaign", 
+                KeyType: "HASH"
+            }, 
         ], 
         ProvisionedThroughput: {
             ReadCapacityUnits: 5, 
