@@ -6,12 +6,12 @@
             <p>Good news, You are subscribed to the F1 VIP mailing list!</p>
            <mat-divider></mat-divider>
 
-            <button mat-button (click)="unsubscribe()">Unsubscribe</button>
+            <button class="action-button" mat-button (click)="unsubscribe()">Unsubscribe</button>
         </div>
         <div *ngIf="user.expiry !== undefined && user.expiry > 0">
            <p>You are not subscribed to the F1 VIP mailing list, you are missing out!</p>
            <mat-divider></mat-divider>
-            <button mat-button (click)="resubscribe()">Subscribe</button>
+            <button class="action-button" mat-button (click)="resubscribe()">Subscribe</button>
         </div>
     </mat-card>
 </div>

@@ -31,12 +31,13 @@
             <tr><td colspan="2">
                 
                 <div class="full-width">
-                    <button mat-button color="primary" (click)="login()">Login</button>
+                    <button class="action-button" mat-button (click)="login()">Login</button>
                 </div>
             </td></tr>
         </table>
     </form>
+    <mat-divider></mat-divider>
+    <div class="register">
+        <p class="redirect-link">Are you new here? <a matAnchor routerLink="/register" routerLinkActive="active">Register</a></p>
+    </div>
 </mat-card>
-<div class="register">
-    <a routerLink="/register" routerLinkActive="active">Register</a>
-</div>

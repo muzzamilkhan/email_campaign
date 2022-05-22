@@ -6,13 +6,20 @@
 
 .full-width {
     width: 100%;
-    
-    button {
-        width: 100%;
-    }
 }
 
 .register {
     width: 100%;
     margin: 10px;
+}
+
+.redirect-link {
+    margin-top: 25px;
+}
+
+.action-button {
+    width: 100%;
+    background-color: #673ab7;
+    color: white;
+    margin-bottom: 10px;
 }

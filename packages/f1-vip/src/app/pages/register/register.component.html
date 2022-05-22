@@ -2,7 +2,7 @@
     <h1>Join our F1 VIP mailing list!</h1>
     <form>
         <table class="full-width" cellspacing="0">
-            <tr><td>
+            <tr><td class="half-width">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>First name</mat-label>
                     <input 
@@ -16,7 +16,7 @@
                     #firstname="ngModel"/>
                 </mat-form-field>
             </td>
-            <td>
+            <td class="half-width">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Last name</mat-label>
                     <input 
@@ -75,12 +75,13 @@
             <tr><td colspan="2">
                 
                 <div class="full-width">
-                    <button mat-button color="primary" (click)="onSave()">Sign up!</button>
+                    <button class="action-button" mat-button (click)="onSave()">Sign up!</button>
                 </div>
             </td></tr>
         </table>
     </form>
+    <mat-divider></mat-divider>
+    <div class="register">
+        <p class="redirect-link">Already a member? <a matAnchor routerLink="/login" routerLinkActive="active">Login</a></p>
+    </div>
 </mat-card>
-<div class="login">
-    <a routerLink="/login" routerLinkActive="active">Login</a>
-</div>

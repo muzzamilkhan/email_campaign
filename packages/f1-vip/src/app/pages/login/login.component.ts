@@ -26,7 +26,7 @@ export class LoginComponent {
 				email: this.user.email,
 			}));
             
-			this.router.navigateByUrl('welcome');
+			this.router.navigateByUrl('dashboard');
 		} else {
 			alert('Incorrect username/password');
 		}

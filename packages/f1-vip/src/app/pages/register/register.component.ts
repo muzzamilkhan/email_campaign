@@ -52,6 +52,6 @@ export class RegisterComponent {
 			email: this.user.email,
 		}));
         
-		this.router.navigateByUrl('welcome');
+		this.router.navigateByUrl('dashboard');
 	}
 }

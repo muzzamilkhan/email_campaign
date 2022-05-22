@@ -33,6 +33,8 @@ export class UserdetailsComponent {
     	}, updatePassword ? this.password : undefined);
 
     	if (update) {
+    		this.password = '';
+    		this.passwordConfirm = '';
     		alert('Details updated successfully');
     	} else {
     		alert('Error saving. Trying again later');
