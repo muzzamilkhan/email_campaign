@@ -25,8 +25,6 @@ export class UserdetailsComponent {
     		updatePassword = true;
     	}
         
-    	// TODO email validation
-        
     	const userDataModel = new UserCampaignDataModelModule();
         
     	const update = await userDataModel.updateUser(this.user.email, environment.campaignKey, {

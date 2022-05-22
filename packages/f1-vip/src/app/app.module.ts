@@ -26,7 +26,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { UserdetailsComponent } from './pages/dashboard/userdetails/userdetails.component';
 import { SubsriptionsComponent } from './pages/dashboard/subsriptions/subsriptions.component';
-import { DataComponent } from './pages/dashboard/data/data.component';
+import { UserDataComponent } from './pages/dashboard/user-data/user-data.component';
 
 const routes: Routes = [
 	{
@@ -63,7 +63,7 @@ const routes: Routes = [
 		DashboardComponent,
 		UserdetailsComponent,
 		SubsriptionsComponent,
-		DataComponent,
+		UserDataComponent,
 	],
 	imports: [
 		BrowserModule,

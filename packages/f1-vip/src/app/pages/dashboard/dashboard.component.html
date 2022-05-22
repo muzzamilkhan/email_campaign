@@ -1,18 +1,22 @@
 <mat-drawer-container class="dashboard">
     <mat-drawer mode="side" opened>
         <mat-nav-list>
-            <mat-list-item><button class='nav-buttons' mat-button (click)="showPanel='vip'">F1 VIP</button></mat-list-item>
+            <mat-list-item><button class='nav-buttons' mat-button (click)="showPanel='subscription'">Subscription</button></mat-list-item>
             <mat-list-item><button class='nav-buttons' mat-button (click)="showPanel='details'">Your details</button></mat-list-item>
+            <mat-list-item><button class='nav-buttons' mat-button (click)="showPanel='user-data'">Your data</button></mat-list-item>
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
-        <div class="drawer-content">
-            <div *ngIf="showPanel==='vip'">
-                <p>Congratulations! You are a VIP member! </p>
-            </div>  
+        <div class="drawer-content">  
+            <div *ngIf="showPanel==='subscription'">
+                <mk-email-campaign-subsriptions [user]="user"></mk-email-campaign-subsriptions>
+            </div>
             <div *ngIf="showPanel==='details'">
                 <mk-email-campaign-userdetails [user]="user"></mk-email-campaign-userdetails>
-            </div>  
+            </div>
+            <div *ngIf="showPanel==='user-data'">
+                <mk-email-campaign-user-data [user]="user"></mk-email-campaign-user-data>
+            </div>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

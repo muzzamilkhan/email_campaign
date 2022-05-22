@@ -37,11 +37,16 @@ export class RegisterComponent {
         
 		const userDataModel = new UserCampaignDataModelModule();
         
-		await userDataModel.saveUser(this.user.email, environment.campaignKey, {
+		const registered = await userDataModel.saveUser(this.user.email, environment.campaignKey, {
 			firstName: this.user.firstname,
 			lastname: this.user.lastname,
 		}, this.user.password);
         
+
+		if (!registered) {
+			alert('Error registering. Please try again later');
+		}
+
 		// TODO JWT
 		localStorage.setItem('token', JSON.stringify({
 			email: this.user.email,

@@ -9,7 +9,7 @@ import { User } from '../../types/user';
 	styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-	showPanel = 'vip';
+	showPanel = 'subscription';
 
 	user: User = {
 		email: '',
@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
 
 			this.user.firstname = userDetails.firstName;
 			this.user.lastname = userDetails.lastname;
+			this.user.expiry = user[0].expiry;
 		}
 	}
 }
