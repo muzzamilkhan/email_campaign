@@ -14,7 +14,6 @@ export abstract class DataModelBase {
     }
     
     protected async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
-        console.log('input', input);
         return await this.dynamoDBStore.saveRecord(input);
     }
 }

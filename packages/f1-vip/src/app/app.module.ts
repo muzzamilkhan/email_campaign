@@ -9,6 +9,7 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const CAMPAIGN_KEY = '4aac604c-5d45-5921-90ea-7c81e806a4b6';
 
@@ -16,6 +17,11 @@ const routes: Routes = [
     {
         path: 'welcome',
         component: WelcomeComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
         canActivate: [AuthGuard],
     },
     {
@@ -39,6 +45,7 @@ const routes: Routes = [
         WelcomeComponent,
         LoginComponent,
         LogoutComponent,
+        DashboardComponent,
     ],
     imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
     exports: [RouterModule],
