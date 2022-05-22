@@ -38,7 +38,7 @@ export class RegisterComponent {
 		const userDataModel = new UserCampaignDataModelModule();
         
 		const registered = await userDataModel.saveUser(this.user.email, environment.campaignKey, {
-			firstName: this.user.firstname,
+			firstname: this.user.firstname,
 			lastname: this.user.lastname,
 		}, this.user.password);
         

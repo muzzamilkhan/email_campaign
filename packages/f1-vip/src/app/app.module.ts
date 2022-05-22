@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './pages/login/login.component';
@@ -30,8 +29,8 @@ import { UserDataComponent } from './pages/dashboard/user-data/user-data.compone
 
 const routes: Routes = [
 	{
-		path: 'welcome',
-		component: WelcomeComponent,
+		path: '',
+		component: DashboardComponent,
 		canActivate: [AuthGuard],
 	},
 	{
@@ -57,7 +56,6 @@ const routes: Routes = [
 	declarations: [
 		AppComponent,
 		RegisterComponent,
-		WelcomeComponent,
 		LoginComponent,
 		LogoutComponent,
 		DashboardComponent,

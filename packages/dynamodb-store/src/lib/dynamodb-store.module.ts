@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateTableCommand, DeleteItemCommand, DeleteItemCommandInput, DeleteTableCommand, DescribeTableCommand, DynamoDB, PutItemCommand } from "@aws-sdk/client-dynamodb";
-import { DeleteCommandInput, DynamoDBDocumentClient, PutCommandInput, QueryCommand, QueryCommandInput } from "@aws-sdk/lib-dynamodb";
+import { CreateTableCommand, DeleteItemCommand, DeleteItemCommandInput, DescribeTableCommand, DynamoDB, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommandInput, QueryCommand, QueryCommandInput } from "@aws-sdk/lib-dynamodb";
 import { tableDefinitions } from './dynamodb-table-definitions';
 
 const marshallOptions = {

@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 		if (user && user.length > 0) {
 			const userDetails = JSON.parse(user[0].D);
 
-			this.user.firstname = userDetails.firstName;
+			this.user.firstname = userDetails.firstname;
 			this.user.lastname = userDetails.lastname;
 			this.user.expiry = user[0].expiry;
 		}
