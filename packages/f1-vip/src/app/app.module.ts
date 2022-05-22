@@ -19,64 +19,73 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressBarModule } from '@angular/material/progress-bar'; 
-import {MatSidenavModule} from '@angular/material/sidenav'; 
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { UserdetailsComponent } from './pages/dashboard/userdetails/userdetails.component';
+import { SubsriptionsComponent } from './pages/dashboard/subsriptions/subsriptions.component';
+import { DataComponent } from './pages/dashboard/data/data.component';
 
 const routes: Routes = [
-    {
-        path: 'welcome',
-        component: WelcomeComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'register',
-        component: RegisterComponent,
-    },
-    {
-        path: 'login',
-        component: LoginComponent,
-    },
-    {
-        path: 'logout',
-        component: LogoutComponent,
-    },
-
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RegisterComponent,
-        WelcomeComponent,
-        LoginComponent,
-        LogoutComponent,
-        DashboardComponent,
-    ],
-    imports: [
-        BrowserModule, 
-        RouterModule.forRoot(routes), 
-        FormsModule, 
-        BrowserAnimationsModule, 
-        MatGridListModule, 
-        MatCardModule, 
-        MatMenuModule, 
-        MatIconModule, 
-        MatButtonModule, 
-        LayoutModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatProgressBarModule,
-        MatSidenavModule,
-        MatCheckboxModule,
-    ],
-    exports: [RouterModule],
-    providers: [AuthGuard, AuthService],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    WelcomeComponent,
+    LoginComponent,
+    LogoutComponent,
+    DashboardComponent,
+    UserdetailsComponent,
+    SubsriptionsComponent,
+    DataComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatListModule,
+  ],
+  exports: [RouterModule],
+  providers: [AuthGuard, AuthService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

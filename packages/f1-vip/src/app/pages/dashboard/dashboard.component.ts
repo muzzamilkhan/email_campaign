@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCampaignDataModelModule } from '@mk-email-campaign/data-model';
 import { environment } from 'packages/f1-vip/src/environments/environment';
+import { User } from '../../types/user';
 
 @Component({
     selector: 'mk-email-campaign-dashboard',
@@ -8,7 +9,9 @@ import { environment } from 'packages/f1-vip/src/environments/environment';
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-    user = {
+    showPanel = 'vip';
+
+    user: User = {
         email: '',
         firstname: '',
         lastname: '',

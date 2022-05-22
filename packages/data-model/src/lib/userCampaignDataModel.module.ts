@@ -30,8 +30,8 @@ export class UserCampaignDataModelModule extends DataModelBase {
         return;
     }
     
-    public async saveUser(email: string, campaign: string, data: any, password: string) {
-        return await this.saveRecord({
+    public async saveUser(email: string, campaign: string, data: any, password?: string) {
+        const save = await this.saveRecord({
             Item: {
                 "email": {
                     S: email,
@@ -42,14 +42,33 @@ export class UserCampaignDataModelModule extends DataModelBase {
                 "D": {
                     S: JSON.stringify(data),
                 },
-                "password_hash": {
-                    S: this.hashPassword(password),
-                },
+                ...(password && ({
+                    "password_hash": {
+                        S: this.hashPassword(password),
+                    }
+                })),
                 "expiry": {
                     N: 0,
                 }
             },
         });
+
+        return save.$metadata.httpStatusCode === 200;
+    }
+
+    public async updateUser(email: string, campaign: string, data: any, password?: string) {
+        const user = await this.getUser(email, campaign);
+
+        if (!user || user.length === 0) {
+            return false;
+        }
+
+        const updatedData = {
+            ...JSON.parse(user[0].D),
+            ...data,
+        }
+
+        return await this.saveUser(email, campaign, updatedData, password);
     }
 
     public async authUser(email: string, campaign: string, password: string) {
