@@ -11,7 +11,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TestComponent } from './test/test.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -47,10 +46,6 @@ const routes: Routes = [
         path: 'logout',
         component: LogoutComponent,
     },
-    {
-        path: 'test',
-        component: TestComponent,
-    },
 
 ];
 
@@ -62,7 +57,6 @@ const routes: Routes = [
         LoginComponent,
         LogoutComponent,
         DashboardComponent,
-        TestComponent,
     ],
     imports: [
         BrowserModule, 
