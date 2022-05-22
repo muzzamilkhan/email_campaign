@@ -14,15 +14,20 @@ export class UserCampaignDataModelModule extends DataModelBase {
         super(DynamoDBTables.users);
     }
     
-    public async getUser(email: string, campaign: string){
-        return await this.getRecord({
+    public async getUser(email: string, campaign: string): Promise<any[] | undefined>{
+        const records = await this.getRecord({
             ExpressionAttributeValues: {
                 ":E": email,
                 ":C": campaign,
-                ":EXPIRY": 1,
             },
-            KeyConditionExpression: "email = :E and campaign = :C and expiry > :EXPIRY",
+            KeyConditionExpression: "email = :E and campaign = :C",
         });
+
+        if (records.Count > 0) {
+            return records.Items;
+        } 
+
+        return;
     }
     
     public async saveUser(email: string, campaign: string, data: any, password: string) {
@@ -45,6 +50,19 @@ export class UserCampaignDataModelModule extends DataModelBase {
                 }
             },
         });
+    }
+
+    public async authUser(email: string, campaign: string, password: string) {
+        const user = await this.getUser(email, campaign);
+
+
+        if (!user || user.length === 0) {
+            return false;
+        }
+
+        const auth = await bcrypt.compare(password, user[0].password_hash);
+
+        return (auth);
     }
     
     private hashPassword(password: string): string {

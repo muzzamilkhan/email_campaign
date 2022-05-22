@@ -42,12 +42,12 @@ export class RegisterComponent {
             firstName: this.user.firstname,
             lastname: this.user.lastname,
         }, this.user.password);
-
+        
         // TODO JWT
         localStorage.setItem('token', JSON.stringify({
             email: this.user.email,
         }));
-
+        
         this.router.navigateByUrl('welcome');
     }
 }

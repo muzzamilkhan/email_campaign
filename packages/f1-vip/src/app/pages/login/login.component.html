@@ -1,0 +1,14 @@
+<form>
+    <div>
+        <label>Email:</label>
+        <input type="email" required name="email" id="email" [(ngModel)]="user.email"/>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" required name="password" id="password" [(ngModel)]="user.password"/>
+    </div>
+    <div>
+        <button type="button" (click)="login()">Login</button>
+    </div>
+</form>
+<a routerLink="/register" routerLinkActive="active">Register</a>
