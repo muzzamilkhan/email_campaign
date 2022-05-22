@@ -1,6 +1,5 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserCampaignDataModelModule } from '@mk-email-campaign/data-model';
 import { environment } from '../../../environments/environment';
 

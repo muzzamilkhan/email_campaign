@@ -10,8 +10,19 @@ import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
-export const CAMPAIGN_KEY = '4aac604c-5d45-5921-90ea-7c81e806a4b6';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestComponent } from './test/test.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar'; 
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 
 const routes: Routes = [
     {
@@ -36,6 +47,11 @@ const routes: Routes = [
         path: 'logout',
         component: LogoutComponent,
     },
+    {
+        path: 'test',
+        component: TestComponent,
+    },
+
 ];
 
 @NgModule({
@@ -46,8 +62,25 @@ const routes: Routes = [
         LoginComponent,
         LogoutComponent,
         DashboardComponent,
+        TestComponent,
     ],
-    imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
+    imports: [
+        BrowserModule, 
+        RouterModule.forRoot(routes), 
+        FormsModule, 
+        BrowserAnimationsModule, 
+        MatGridListModule, 
+        MatCardModule, 
+        MatMenuModule, 
+        MatIconModule, 
+        MatButtonModule, 
+        LayoutModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatProgressBarModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+    ],
     exports: [RouterModule],
     providers: [AuthGuard, AuthService],
     bootstrap: [AppComponent],

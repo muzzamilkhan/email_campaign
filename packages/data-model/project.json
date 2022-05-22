@@ -5,7 +5,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/data-model"],
+      "outputs": [
+        "coverage/packages/data-model"
+      ],
       "options": {
         "jestConfig": "packages/data-model/jest.config.ts",
         "passWithNoTests": true
