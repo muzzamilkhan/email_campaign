@@ -29,63 +29,63 @@ import { SubsriptionsComponent } from './pages/dashboard/subsriptions/subsriptio
 import { DataComponent } from './pages/dashboard/data/data.component';
 
 const routes: Routes = [
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'logout',
-    component: LogoutComponent,
-  },
+	{
+		path: 'welcome',
+		component: WelcomeComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'dashboard',
+		component: DashboardComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'register',
+		component: RegisterComponent,
+	},
+	{
+		path: 'login',
+		component: LoginComponent,
+	},
+	{
+		path: 'logout',
+		component: LogoutComponent,
+	},
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    WelcomeComponent,
-    LoginComponent,
-    LogoutComponent,
-    DashboardComponent,
-    UserdetailsComponent,
-    SubsriptionsComponent,
-    DataComponent,
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    FormsModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatProgressBarModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatDividerModule,
-    MatListModule,
-  ],
-  exports: [RouterModule],
-  providers: [AuthGuard, AuthService],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		RegisterComponent,
+		WelcomeComponent,
+		LoginComponent,
+		LogoutComponent,
+		DashboardComponent,
+		UserdetailsComponent,
+		SubsriptionsComponent,
+		DataComponent,
+	],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(routes),
+		FormsModule,
+		BrowserAnimationsModule,
+		MatGridListModule,
+		MatCardModule,
+		MatMenuModule,
+		MatIconModule,
+		MatButtonModule,
+		LayoutModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatProgressBarModule,
+		MatSidenavModule,
+		MatCheckboxModule,
+		MatDividerModule,
+		MatListModule,
+	],
+	exports: [RouterModule],
+	providers: [AuthGuard, AuthService],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

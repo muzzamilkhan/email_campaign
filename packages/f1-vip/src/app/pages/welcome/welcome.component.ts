@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mk-email-campaign-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss'],
+	selector: 'mk-email-campaign-welcome',
+	templateUrl: './welcome.component.html',
+	styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent {
 }

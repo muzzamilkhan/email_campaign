@@ -4,49 +4,49 @@ import { UserCampaignDataModelModule } from '@mk-email-campaign/data-model';
 import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'mk-email-campaign-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss'],
+	selector: 'mk-email-campaign-register',
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-    title = 'Register'
+	title = 'Register'
     
-    user = {
-        firstname: '',
-        lastname: '',
-        email: '',
-        password: '',
-        passwordConfirm: '',
-        toc: false,
-    }
+	user = {
+		firstname: '',
+		lastname: '',
+		email: '',
+		password: '',
+		passwordConfirm: '',
+		toc: false,
+	}
     
-    constructor(private router: Router) {}
+	constructor(private router: Router) {}
     
-    async onSave() {
-        if (!this.user.toc) {
-            alert('You must agree to the terms and conditions to proceed');
-            return;
-        }
+	async onSave() {
+		if (!this.user.toc) {
+			alert('You must agree to the terms and conditions to proceed');
+			return;
+		}
         
-        if (this.user.password !== this.user.passwordConfirm) {
-            alert('Passwords do not match');
-            return;
-        }
+		if (this.user.password !== this.user.passwordConfirm) {
+			alert('Passwords do not match');
+			return;
+		}
         
-        // TODO email validation
+		// TODO email validation
         
-        const userDataModel = new UserCampaignDataModelModule();
+		const userDataModel = new UserCampaignDataModelModule();
         
-        await userDataModel.saveUser(this.user.email, environment.campaignKey, {
-            firstName: this.user.firstname,
-            lastname: this.user.lastname,
-        }, this.user.password);
+		await userDataModel.saveUser(this.user.email, environment.campaignKey, {
+			firstName: this.user.firstname,
+			lastname: this.user.lastname,
+		}, this.user.password);
         
-        // TODO JWT
-        localStorage.setItem('token', JSON.stringify({
-            email: this.user.email,
-        }));
+		// TODO JWT
+		localStorage.setItem('token', JSON.stringify({
+			email: this.user.email,
+		}));
         
-        this.router.navigateByUrl('welcome');
-    }
+		this.router.navigateByUrl('welcome');
+	}
 }

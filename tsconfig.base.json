@@ -21,6 +21,5 @@
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"],
-  "indent": [true, "tabs", 2],
+  "exclude": ["node_modules", "tmp"]
 }
