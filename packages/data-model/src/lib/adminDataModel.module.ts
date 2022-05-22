@@ -9,18 +9,17 @@ import * as bcrypt from 'bcryptjs';
 		CommonModule,
 	],
 })
-export class UserCampaignDataModelModule extends DataModelBase {
+export class AdminDataModelModule extends DataModelBase {
 	constructor() {
-		super(DynamoDBTables.users);
+		super(DynamoDBTables.admin);
 	}
     
-	public async getUser(email: string, campaign: string): Promise<any[] | undefined>{
+	public async getUser(email: string): Promise<any[] | undefined>{
 		const records = await this.getRecord({
 			ExpressionAttributeValues: {
 				":E": email,
-				":C": campaign,
 			},
-			KeyConditionExpression: "email = :E and campaign = :C",
+			KeyConditionExpression: "email = :E",
 		});
         
 		if (records.Count > 0) {
@@ -32,7 +31,6 @@ export class UserCampaignDataModelModule extends DataModelBase {
     
 	public async saveUser(
 		email: string, 
-		campaign: string, 
 		data: any, 
 		password: string
 	) {
@@ -41,48 +39,20 @@ export class UserCampaignDataModelModule extends DataModelBase {
 				"email": {
 					S: email,
 				},
-				"campaign": {
-					S: campaign,
-				},
 				"D": {
 					S: JSON.stringify(data),
 				},
 				"password_hash": {
 					S: this.hashPassword(password),
 				},
-				"expiry": {
-					N: 0,
-				},
-				"registered_timestamp": {
-					N: new Date().getTime(),
-				},
 			},
 		});
         
 		return save.$metadata.httpStatusCode === 200;
 	}
-
-	public async deleteUser(
-		email: string,
-		campaign: string,
-	) {
-        
-		const deleteUser = await this.deleteRecord({
-			Key: {
-				"email": {
-					S: email,
-				},
-				"campaign": {
-					S: campaign,
-				},
-			},
-		});
-        
-		return deleteUser.$metadata.httpStatusCode === 200;
-	}
     
-	public async updateUser(email: string, campaign: string, data?: any, password?: string, expiry?: number) {
-		const user = await this.getUser(email, campaign);
+	public async updateUser(email: string, data?: any, password?: string) {
+		const user = await this.getUser(email);
         
 		if (!user || user.length === 0) {
 			return false;
@@ -97,30 +67,17 @@ export class UserCampaignDataModelModule extends DataModelBase {
 		} else {
 			password = this.hashPassword(password);
 		}
-
-		if (expiry === undefined) {
-			expiry = user[0].expiry;
-		}
         
 		const save = await this.saveRecord({
 			Item: {
 				"email": {
 					S: email,
 				},
-				"campaign": {
-					S: campaign,
-				},
 				"D": {
 					S: JSON.stringify(data),
 				},
 				"password_hash": {
 					S: password,
-				},
-				"expiry": {
-					N: expiry,
-				},
-				"registered_timestamp": {
-					N: user[0].registered_timestamp,
 				},
 			},
 		});
@@ -129,14 +86,14 @@ export class UserCampaignDataModelModule extends DataModelBase {
         
 	}
     
-	public async authUser(email: string, campaign: string, password: string) {
-		const user = await this.getUser(email, campaign);
+	public async authUser(email: string, password: string) {
+		const user = await this.getUser(email);
         
         
 		if (!user || user.length === 0) {
 			return false;
 		}
-        
+    
 		return await bcrypt.compare(password, user[0].password_hash);
 	}
     

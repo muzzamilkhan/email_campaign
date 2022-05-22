@@ -1,0 +1,43 @@
+<mat-card class="login-form">
+    <h1>Login</h1>
+    <form>
+        <table class="full-width" cellspacing="0">
+            <tr><td colspan="2">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Email address</mat-label>
+                    <input 
+                    matInput
+                    required 
+                    type="email"
+                    name="email" 
+                    id="email" 
+                    [(ngModel)]="user.email" 
+                    #email="ngModel"/>
+                </mat-form-field>
+            </td></tr>
+            <tr><td colspan="2">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input 
+                    matInput
+                    required 
+                    type="password"
+                    name="password" 
+                    id="password" 
+                    [(ngModel)]="user.password" 
+                    #password="ngModel"/>
+                </mat-form-field>
+            </td></tr>
+            <tr><td colspan="2">
+                
+                <div class="full-width">
+                    <button class="action-button" mat-button (click)="login()">Login</button>
+                </div>
+            </td></tr>
+        </table>
+    </form>
+    <mat-divider></mat-divider>
+    <div class="register">
+        <p class="redirect-link">Are you new here? <a matAnchor routerLink="/register" routerLinkActive="active">Register</a></p>
+    </div>
+</mat-card>

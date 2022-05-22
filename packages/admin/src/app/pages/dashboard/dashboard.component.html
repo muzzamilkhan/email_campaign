@@ -1,0 +1,17 @@
+<mat-card class="dashboard">
+    <mat-drawer-container class="dashboard-drawer">
+        <mat-drawer mode="side" opened>
+            <mat-nav-list>
+                <mat-list-item disableRipple><button disableRipple class='nav-buttons' mat-button (click)="showPanel='details'">Your details</button></mat-list-item>
+                <mat-list-item disableRipple><a disableRipple class='nav-buttons' mat-button routerLink="/logout" routerLinkActive="active">Logout</a></mat-list-item>
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="drawer-content">
+                <div *ngIf="showPanel==='details'">
+                    <mk-email-campaign-userdetails [user]="user"></mk-email-campaign-userdetails>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</mat-card>

@@ -17,6 +17,7 @@ const unmarshallOptions = {
 export enum DynamoDBTables {
     campaigns= 'campaigns',
     users= 'users',
+    admin= 'admin',
 }
 
 const translateConfig = { marshallOptions, unmarshallOptions };
