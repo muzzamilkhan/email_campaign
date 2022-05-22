@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateTableCommand, DeleteItemCommand, DeleteItemCommandInput, DescribeTableCommand, DynamoDB, PutItemCommand } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, PutCommandInput, QueryCommand, QueryCommandInput } from "@aws-sdk/lib-dynamodb";
+import { CreateTableCommand, DeleteItemCommand, DeleteItemCommandInput, DescribeTableCommand, DynamoDB, PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommandInput, QueryCommand, QueryCommandInput, ScanCommandInput } from "@aws-sdk/lib-dynamodb";
 import { tableDefinitions } from './dynamodb-table-definitions';
 
 const marshallOptions = {
@@ -72,6 +72,16 @@ export class DynamodbStoreModule {
 		};
         
 		return await this.dynamoDBDocument.send(new QueryCommand(params));
+	}
+    
+	public async scan(): Promise<any> {
+		await this.initTable();
+        
+		const params: QueryCommandInput = {
+			TableName: tableDefinitions[DynamoDBTables[this.table]].TableName,
+		};
+        
+		return await this.dynamoDBDocument.send(new ScanCommand(params));
 	}
     
 	public async initTable(): Promise<void> {

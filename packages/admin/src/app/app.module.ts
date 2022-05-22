@@ -23,6 +23,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { UserdetailsComponent } from './pages/dashboard/userdetails/userdetails.component';
+import { CampaignsComponent } from './pages/dashboard/campaigns/campaigns.component';
 
 const routes: Routes = [
 	{
@@ -52,6 +53,7 @@ const routes: Routes = [
 		LogoutComponent,
 		DashboardComponent,
 		UserdetailsComponent,
+		CampaignsComponent,
 	],
 	imports: [
 		BrowserModule,

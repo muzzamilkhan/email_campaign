@@ -1,0 +1,23 @@
+.campaigns {
+    width: 100%;
+}
+
+
+.inactive {
+    background-color: #e0e0e0;
+}
+
+.campaign-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.campaign-cards {
+    margin: 10px;
+    flex-basis: 30%;
+}
+
+.integration-code {
+    width: 250px;
+}

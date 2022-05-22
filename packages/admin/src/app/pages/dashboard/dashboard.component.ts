@@ -8,7 +8,7 @@ import { User } from '../../types/user';
 	styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-	showPanel = 'details';
+	showPanel = 'campaigns';
 
 	user: User = {
 		email: '',

@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	campaignKey: '4aac604c-5d45-5921-90ea-7c81e806a4b6',
+	campaignKey: 'bc7a0fb5-b861-53be-b179-4d52a08a7e3d',
 }
 
 /*

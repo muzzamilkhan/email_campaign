@@ -13,6 +13,9 @@ export abstract class DataModelBase {
 	protected async getRecord(input: Omit<QueryCommandInput, 'TableName'>): Promise<any> {
 		return await this.dynamoDBStore.getRecord(input);
 	}
+	protected async scan(): Promise<any> {
+		return await this.dynamoDBStore.scan();
+	}
     
 	protected async saveRecord(input: Omit<PutCommandInput, 'TableName'>): Promise<any> {
 		return await this.dynamoDBStore.saveRecord(input);

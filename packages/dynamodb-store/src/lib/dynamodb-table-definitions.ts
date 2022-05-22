@@ -25,21 +25,21 @@ export const tableDefinitions: {[key in DynamoDBTables]: any} = {
         
 		AttributeDefinitions: [
 			{
-				AttributeName: "email", 
+				AttributeName: "campaign", 
 				AttributeType: "S"
 			},
 			{
-				AttributeName: "campaign", 
+				AttributeName: "email", 
 				AttributeType: "S"
 			},
 		], 
 		KeySchema: [
 			{
-				AttributeName: "email", 
+				AttributeName: "campaign", 
 				KeyType: "HASH"
 			}, 
 			{
-				AttributeName: "campaign", 
+				AttributeName: "email", 
 				KeyType: "RANGE"
 			}, 
 		], 

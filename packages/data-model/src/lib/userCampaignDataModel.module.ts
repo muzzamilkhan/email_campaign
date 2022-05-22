@@ -14,6 +14,21 @@ export class UserCampaignDataModelModule extends DataModelBase {
 		super(DynamoDBTables.users);
 	}
     
+	public async getAllUsers(campaign: string): Promise<any[] | undefined>{
+		const records = await this.getRecord({
+			ExpressionAttributeValues: {
+				":C": campaign,
+			},
+			KeyConditionExpression: "campaign = :C",
+		});
+        
+		if (records.Count > 0) {
+			return records.Items;
+		} 
+        
+		return;
+	}
+
 	public async getUser(email: string, campaign: string): Promise<any[] | undefined>{
 		const records = await this.getRecord({
 			ExpressionAttributeValues: {
